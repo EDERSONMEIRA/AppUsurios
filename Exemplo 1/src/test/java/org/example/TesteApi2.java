@@ -1,6 +1,5 @@
 package org.example;
 
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonMapFormatVisitor;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import io.restassured.RestAssured;
