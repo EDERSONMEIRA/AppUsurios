@@ -70,7 +70,7 @@ public class TesteApi2 {
     }
 
 
-    /**-------------Validar Reserva Criada-------------------*/
+    /**-------------Validar Reserva Criada----------*---------*/
     @Test
     public void validarReservaCriada(){
         String reserva ="{\n" +
