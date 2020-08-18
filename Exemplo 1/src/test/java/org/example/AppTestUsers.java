@@ -16,18 +16,14 @@ import java.util.List;
 /**
  * Unit test for simple App.
  */
-public class AppTest
+public class AppTestUsers
 {
-
-    /**------------- Config -------------------*/
     @BeforeClass
     public static  void setup(){
         RestAssured.baseURI ="https://randomuser.me/";
         RestAssured.basePath = "/api";
     }
 
-
-    /**-------------Retorna 20 usuarios-------------------*/
     @Test
     public void retornarVinteUsuario(){
 
@@ -36,13 +32,11 @@ public class AppTest
                 .when()
                 .get("")
                 .then()
-                .statusCode(200)
                 .body("info.results", Matchers.is(20))
              ;
 
     }
 
-    /**-------------Retorna 1 usuarios Brasileiro-------------------*/
     @Test
     public void retornarUsuarioBrasileiro(){
 
@@ -57,8 +51,6 @@ public class AppTest
 
     }
 
-    /**-------------Retorna 1 usuarios da Pagina 3-------------------*/
-
     @Test
     public void retornarUsuarioPaginado(){
 
@@ -68,12 +60,11 @@ public class AppTest
                 .when()
                 .get("")
                 .then()
-                .statusCode(200)
+                .body("info.results", Matchers.is(1))
+                .body("info.page",Matchers.is(3))
         ;
 
     }
-
-    /**-------------Retorna Nome e Email-------------------*/
 
     @Test
     public void retornarNomeEmail(){
@@ -89,8 +80,6 @@ public class AppTest
         ;
     }
 
-    /**-------------Retorna Usuario BR,US,ES OU CA ---------------------*/
-
     @Test
     public void retornarUsuarioBrUsEsCa(){
 
@@ -105,8 +94,6 @@ public class AppTest
                 .statusCode(200)
                 .extract().path("results[0].nat")
         ;
-
-        System.out.println(nat);
         Assert.assertThat(nascionalidades, Matchers.hasItem(nat));
 
     }
